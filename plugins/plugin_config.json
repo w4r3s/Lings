@@ -1,0 +1,14 @@
+{
+    "plugins": [
+        {
+            "name": "Sample Plugin",
+            "module": "plugins.sample_plugin",
+            "enabled": true
+        },
+        {
+            "name": "DeepL Translator",
+            "module": "plugins.deepl_translator",
+            "enabled": true
+        }
+    ]
+}

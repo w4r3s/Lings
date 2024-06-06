@@ -1,0 +1,20 @@
+{
+    "translations": [
+        {
+            "file": "zh_ar_grades.json",
+            "description": "简中-阿拉伯语成绩单词库"
+        },
+        {
+            "file": "en_ar_grades.json",
+            "description": "英语-阿拉伯语成绩单词库"
+        },
+        {
+            "file": "en_cn_passport.json",
+            "description": "护照词库"
+        },
+        {
+            "file": "en_es_passport.json",
+            "description": "英西护照词库"
+        }
+    ]
+}

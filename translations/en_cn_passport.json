@@ -1,0 +1,19 @@
+{
+    "translations": {
+        "hello": "你好",
+        "world": "世界",
+        "Passport": "护照",
+        "Name": "姓名",
+        "Nationality": "国籍",
+        "Date of Birth": "出生日期",
+        "This is a test paragraph.": "这是一个测试段落。",
+        "Python is great.": "Python很棒。",
+        "I love programming.": "我爱编程。",
+        "Welcome to the translation app.": "欢迎使用翻译应用程序。",
+        "How are you?": "你好吗？",
+        "Good morning.": "早上好。",
+        "Good night.": "晚安。",
+        "See you later.": "再见。",
+        "wow": "哇"
+    }
+}
