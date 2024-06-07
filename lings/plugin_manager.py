@@ -60,7 +60,7 @@ class PluginManager:
                 "module": plugin["module"].__name__,
                 "enabled": plugin["enabled"]
             })
-        with open("plugins/plugin_config.json", "w") as file:
+        with open("data/plugin_config.json", "w") as file:
             json.dump(config, file, indent=4)
 
 def open_plugin_manager():

@@ -34,7 +34,7 @@ class TranslationApp:
 
     def load_metadata(self):
         try:
-            with open('translations_metadata.json', 'r', encoding='utf-8') as f:
+            with open('./data/translations_metadata.json', 'r', encoding='utf-8') as f:
                 logging.info('Loaded translations metadata')
                 return json.load(f).get("translations", [])
         except FileNotFoundError:
