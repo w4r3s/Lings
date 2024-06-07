@@ -4,6 +4,7 @@ import os
 import json
 from diceditor import DictionaryEditor
 
+
 class DictionaryManager:
     def __init__(self, root):
         self.root = root
@@ -16,9 +17,9 @@ class DictionaryManager:
         self.create_widgets()
 
     def load_dictionaries(self):
-        translations_folder = 'translations'
+        translations_folder = "translations"
         for filename in os.listdir(translations_folder):
-            if filename.endswith('.json'):
+            if filename.endswith(".json"):
                 self.dictionaries.append(os.path.join(translations_folder, filename))
 
     def create_widgets(self):
@@ -31,9 +32,15 @@ class DictionaryManager:
         btn_frame = tk.Frame(self.root)
         btn_frame.pack(fill=tk.X, padx=10, pady=5)
 
-        tk.Button(btn_frame, text="Edit Dictionary", command=self.edit_dictionary).pack(side=tk.LEFT, padx=5)
-        tk.Button(btn_frame, text="Add Dictionary", command=self.add_dictionary).pack(side=tk.LEFT, padx=5)
-        tk.Button(btn_frame, text="Delete Dictionary", command=self.delete_dictionary).pack(side=tk.LEFT, padx=5)
+        tk.Button(btn_frame, text="Edit Dictionary", command=self.edit_dictionary).pack(
+            side=tk.LEFT, padx=5
+        )
+        tk.Button(btn_frame, text="Add Dictionary", command=self.add_dictionary).pack(
+            side=tk.LEFT, padx=5
+        )
+        tk.Button(
+            btn_frame, text="Delete Dictionary", command=self.delete_dictionary
+        ).pack(side=tk.LEFT, padx=5)
 
     def edit_dictionary(self):
         selected_index = self.listbox.curselection()
@@ -44,9 +51,11 @@ class DictionaryManager:
         self.open_editor(dictionary_path)
 
     def add_dictionary(self):
-        file_path = filedialog.asksaveasfilename(defaultextension=".json", filetypes=[("JSON files", "*.json")])
+        file_path = filedialog.asksaveasfilename(
+            defaultextension=".json", filetypes=[("JSON files", "*.json")]
+        )
         if file_path:
-            with open(file_path, 'w', encoding='utf-8') as f:
+            with open(file_path, "w", encoding="utf-8") as f:
                 json.dump({"translations": {}}, f, ensure_ascii=False, indent=4)
             self.dictionaries.append(file_path)
             self.listbox.insert(tk.END, file_path)
@@ -58,7 +67,9 @@ class DictionaryManager:
             messagebox.showerror("Error", "No dictionary selected")
             return
         dictionary_path = self.listbox.get(selected_index[0])
-        if messagebox.askyesno("Delete", f"Are you sure you want to delete {dictionary_path}?"):
+        if messagebox.askyesno(
+            "Delete", f"Are you sure you want to delete {dictionary_path}?"
+        ):
             os.remove(dictionary_path)
             self.listbox.delete(selected_index)
             self.dictionaries.remove(dictionary_path)
@@ -68,6 +79,7 @@ class DictionaryManager:
         editor_root = tk.Toplevel(self.root)
         DictionaryEditor(editor_root, dictionary_path)
         editor_root.mainloop()
+
 
 if __name__ == "__main__":
     root = tk.Tk()

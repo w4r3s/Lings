@@ -7,6 +7,7 @@ import importlib
 import os
 import logging
 
+
 class PluginManager:
     def __init__(self, root):
         self.root = root
@@ -43,25 +44,28 @@ class PluginManager:
                     plugin["module"].deactivate()
                     plugin["enabled"] = False
                     self.tree.item(selected_item, values=(plugin_name, "Disabled"))
-                    logging.info(f'Disabled plugin {plugin_name}')
+                    logging.info(f"Disabled plugin {plugin_name}")
                 else:
                     plugin["module"].activate()
                     plugin["enabled"] = True
                     self.tree.item(selected_item, values=(plugin_name, "Enabled"))
-                    logging.info(f'Enabled plugin {plugin_name}')
+                    logging.info(f"Enabled plugin {plugin_name}")
                 self.save_plugins()
                 break
 
     def save_plugins(self):
         config = {"plugins": []}
         for plugin in self.plugins:
-            config["plugins"].append({
-                "name": plugin["name"],
-                "module": plugin["module"].__name__,
-                "enabled": plugin["enabled"]
-            })
+            config["plugins"].append(
+                {
+                    "name": plugin["name"],
+                    "module": plugin["module"].__name__,
+                    "enabled": plugin["enabled"],
+                }
+            )
         with open("data/plugin_config.json", "w") as file:
             json.dump(config, file, indent=4)
+
 
 def open_plugin_manager():
     root = tk.Toplevel()
