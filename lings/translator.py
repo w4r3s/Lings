@@ -3,6 +3,7 @@ import os
 import logging
 from docx import Document
 from docx.shared import RGBColor
+from docx.oxml.ns import qn
 
 # 配置日志记录
 logging.basicConfig(filename='translation.log', level=logging.INFO, format='%(asctime)s:%(levelname)s:%(message)s')
